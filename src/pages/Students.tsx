@@ -131,7 +131,9 @@ const Students = () => {
             </div>
           </div>
 
-          <Table>
+          <div className="overflow-x-auto -mx-6 sm:mx-0">
+            <div className="inline-block min-w-full align-middle">
+              <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Admission No.</TableHead>
@@ -167,7 +169,9 @@ const Students = () => {
                 );
               })}
             </TableBody>
-          </Table>
+              </Table>
+            </div>
+          </div>
         </Card>
       </div>
     </DashboardLayout>

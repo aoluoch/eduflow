@@ -119,10 +119,10 @@ const StudentPromotion = () => {
 
   return (
     <DashboardLayout>
-      <div className="p-8 space-y-6">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Student Promotion</h1>
-          <p className="text-muted-foreground mt-1">Promote students to the next grade level</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Student Promotion</h1>
+          <p className="text-muted-foreground mt-1 text-sm sm:text-base">Promote students to the next grade level</p>
         </div>
 
         {/* Validation Warning */}
@@ -141,7 +141,7 @@ const StudentPromotion = () => {
         )}
 
         {/* Current Term Info */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <Card className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -232,8 +232,8 @@ const StudentPromotion = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <Button
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-2">
+                    <Button
                     variant="outline"
                     onClick={handleSelectAll}
                     disabled={!isTermThree}
@@ -249,66 +249,73 @@ const StudentPromotion = () => {
                 </div>
               </div>
 
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-12">
-                      <Checkbox
-                        checked={selectAll}
-                        onCheckedChange={handleSelectAll}
-                        disabled={!isTermThree}
-                      />
-                    </TableHead>
-                    <TableHead>Admission No.</TableHead>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Gender</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Term 3 Assessments</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {studentsInGrade.map((student) => {
-                    const status = getStudentStatus(student.id);
-                    const assessments = getAssessmentsByStudentId(student.id);
-                    const term3Count = assessments.filter(a => a.term === 3).length;
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-12">
+                        <Checkbox
+                          checked={selectAll}
+                          onCheckedChange={handleSelectAll}
+                          disabled={!isTermThree}
+                        />
+                      </TableHead>
+                      <TableHead>Admission No.</TableHead>
+                      <TableHead className="hidden sm:table-cell">Name</TableHead>
+                      <TableHead className="sm:hidden">Student</TableHead>
+                      <TableHead className="hidden md:table-cell">Gender</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead className="hidden lg:table-cell">Term 3 Assessments</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {studentsInGrade.map((student) => {
+                      const status = getStudentStatus(student.id);
+                      const assessments = getAssessmentsByStudentId(student.id);
+                      const term3Count = assessments.filter(a => a.term === 3).length;
 
-                    return (
-                      <TableRow key={student.id}>
-                        <TableCell>
-                          <Checkbox
-                            checked={selectedStudents.includes(student.id)}
-                            onCheckedChange={() => toggleStudent(student.id)}
-                            disabled={!status.ready || !isTermThree}
-                          />
-                        </TableCell>
-                        <TableCell className="font-medium">{student.admissionNumber}</TableCell>
-                        <TableCell>{student.name}</TableCell>
-                        <TableCell>{student.gender}</TableCell>
-                        <TableCell>
-                          {status.ready ? (
-                            <Badge className="bg-success">Ready</Badge>
-                          ) : (
-                            <Badge variant="outline" className="text-warning border-warning">
-                              Not Ready
-                            </Badge>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex flex-col">
-                            <span className={term3Count >= 3 ? 'text-success' : 'text-warning'}>
-                              {term3Count} completed
-                            </span>
-                            {!status.ready && (
-                              <span className="text-xs text-muted-foreground">
-                                {status.reason}
-                              </span>
+                      return (
+                        <TableRow key={student.id}>
+                          <TableCell>
+                            <Checkbox
+                              checked={selectedStudents.includes(student.id)}
+                              onCheckedChange={() => toggleStudent(student.id)}
+                              disabled={!status.ready || !isTermThree}
+                            />
+                          </TableCell>
+                          <TableCell className="font-medium">{student.admissionNumber}</TableCell>
+                          <TableCell className="hidden sm:table-cell">{student.name}</TableCell>
+                          <TableCell className="sm:hidden">
+                            <div>
+                              <p className="font-medium">{student.name}</p>
+                              <p className="text-xs text-muted-foreground">{student.gender}</p>
+                            </div>
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">{student.gender}</TableCell>
+                          <TableCell>
+                            {status.ready ? (
+                              <Badge className="bg-success">Ready</Badge>
+                            ) : (
+                              <Badge variant="outline" className="text-warning border-warning">
+                                Not Ready
+                              </Badge>
                             )}
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
+                          </TableCell>
+                          <TableCell className="hidden lg:table-cell">
+                            <div className="flex flex-col">
+                              <span className={term3Count >= 3 ? 'text-success' : 'text-warning'}>
+                                {term3Count} completed
+                              </span>
+                              {!status.ready && (
+                                <span className="text-xs text-muted-foreground">
+                                  {status.reason}
+                                </span>
+                              )}
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  </TableBody>
               </Table>
             </div>
           </Card>

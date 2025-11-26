@@ -11,13 +11,13 @@ export const SuperAdminDashboard = () => {
   const pendingExams = exams.filter(e => !e.verified).length;
 
   return (
-    <div className="p-8 space-y-8">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Super Admin Dashboard</h1>
-        <p className="text-muted-foreground mt-1">Welcome back! Here's your school overview.</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Super Admin Dashboard</h1>
+        <p className="text-muted-foreground mt-1 text-sm sm:text-base">Welcome back! Here's your school overview.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <StatCard
           title="Total Students"
           value={students.length}
@@ -45,7 +45,7 @@ export const SuperAdminDashboard = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         <Card className="p-6">
           <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
             <TrendingUp className="h-5 w-5 text-primary" />
@@ -102,9 +102,9 @@ export const SuperAdminDashboard = () => {
         </Card>
       </div>
 
-      <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4">Enrollment by Grade</h3>
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-4">
+      <Card className="p-4 sm:p-6">
+        <h3 className="text-base sm:text-lg font-semibold mb-4">Enrollment by Grade</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-3 sm:gap-4">
           {grades.map(grade => {
             const count = students.filter(s => s.gradeId === grade.id).length;
             return (

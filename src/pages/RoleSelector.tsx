@@ -58,15 +58,15 @@ const RoleSelector = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-6">
-      <div className="max-w-5xl w-full space-y-8">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4 sm:p-6">
+      <div className="max-w-5xl w-full space-y-6 sm:space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-foreground">Getmore Educational Community Centre</h1>
-          <p className="text-xl text-muted-foreground">CBC School Management System</p>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground">Getmore Educational Community Centre</h1>
+          <p className="text-lg sm:text-xl text-muted-foreground">CBC School Management System</p>
           <p className="text-sm text-muted-foreground">Select a role to continue (Mock Authentication)</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {roles.map(({ role, label, description, icon: Icon }) => (
             <Card
               key={role}
