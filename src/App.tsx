@@ -10,6 +10,7 @@ import Students from "./pages/Students";
 import StudentProfile from "./pages/StudentProfile";
 import Teachers from "./pages/Teachers";
 import Classes from "./pages/Classes";
+import StudentPromotion from "./pages/StudentPromotion";
 import Library from "./pages/Library";
 import Timetable from "./pages/Timetable";
 import Exams from "./pages/Exams";
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/student/:id" element={<StudentProfile />} />
             <Route path="/teachers" element={<Teachers />} />
             <Route path="/classes" element={<Classes />} />
+            <Route path="/promotion" element={<StudentPromotion />} />
             <Route path="/exams" element={<Exams />} />
             <Route path="/timetable" element={<Timetable />} />
             <Route path="/settings" element={<Dashboard />} />
