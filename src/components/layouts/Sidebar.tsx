@@ -109,7 +109,7 @@ export const Sidebar = () => {
 
         {currentUser && (
           <div className="p-4 bg-sidebar-accent">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-full bg-sidebar-primary flex items-center justify-center">
                 <span className="text-sidebar-primary-foreground font-semibold">
                   {currentUser.name.charAt(0)}
@@ -120,6 +120,14 @@ export const Sidebar = () => {
                 <p className="text-xs text-sidebar-foreground/70 capitalize">{currentRole?.replace('-', ' ')}</p>
               </div>
             </div>
+            <NavLink
+              to="/settings"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-center gap-2 w-full py-2 rounded-md text-sm text-sidebar-foreground bg-sidebar-primary/10 hover:bg-sidebar-primary/20 transition-colors border border-sidebar-border"
+            >
+              <Settings className="h-4 w-4" />
+              <span>Account Settings</span>
+            </NavLink>
           </div>
         )}
 
