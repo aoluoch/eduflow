@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
 import { toast } from 'sonner';
 
 const Students = () => {
@@ -43,7 +44,7 @@ const Students = () => {
   );
 
   const handleAdmit = () => {
-    toast.success('Student admitted successfully!');
+    toast.success('Student admitted successfully! Parent invitation email sent.');
     setDialogOpen(false);
   };
 
@@ -70,7 +71,8 @@ const Students = () => {
                     Enter student details to admit them to the school
                   </DialogDescription>
                 </DialogHeader>
-                <div className="space-y-4 py-4">
+                <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto">
+                  <h3 className="font-semibold text-sm text-muted-foreground">Student Information</h3>
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
                     <Input id="name" placeholder="Student full name" />
@@ -105,6 +107,35 @@ const Students = () => {
                       <SelectContent className="bg-background border border-border z-50">
                         <SelectItem value="Male">Male</SelectItem>
                         <SelectItem value="Female">Female</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <Separator className="my-4" />
+                  
+                  <h3 className="font-semibold text-sm text-muted-foreground">Parent/Guardian Information</h3>
+                  <div className="space-y-2">
+                    <Label htmlFor="parentName">Parent/Guardian Name</Label>
+                    <Input id="parentName" placeholder="Full name" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="parentEmail">Parent Email</Label>
+                    <Input id="parentEmail" type="email" placeholder="parent@example.com" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="parentPhone">Parent Phone</Label>
+                    <Input id="parentPhone" type="tel" placeholder="+254 712 345 678" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="relationship">Relationship</Label>
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select relationship" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-background border border-border z-50">
+                        <SelectItem value="Mother">Mother</SelectItem>
+                        <SelectItem value="Father">Father</SelectItem>
+                        <SelectItem value="Guardian">Guardian</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
