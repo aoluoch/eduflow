@@ -31,6 +31,7 @@ export const Sidebar = () => {
           { to: '/classes', icon: BookOpen, label: 'Classes & Subjects' },
           { to: '/promotion', icon: TrendingUp, label: 'Student Promotion' },
           { to: '/exams', icon: FileText, label: 'Exams' },
+          { to: '/analytics', icon: TrendingUp, label: 'Analytics' },
           { to: '/timetable', icon: Calendar, label: 'Timetable' },
           { to: '/library', icon: Library, label: 'Library' },
           { to: '/settings', icon: Settings, label: 'Settings' },
