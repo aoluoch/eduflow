@@ -17,7 +17,8 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <div className="flex h-screen w-full bg-background">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto lg:ml-0">
+        <div className="lg:hidden h-16" /> {/* Spacer for mobile menu button */}
         {children}
       </main>
     </div>

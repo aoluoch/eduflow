@@ -167,10 +167,10 @@ const ResultEntry = () => {
 
   return (
     <DashboardLayout>
-      <div className="p-8 space-y-6">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Result Entry</h1>
-          <p className="text-muted-foreground mt-1">Enter examination marks and view CBC grading</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Result Entry</h1>
+          <p className="text-muted-foreground mt-1 text-sm sm:text-base">Enter examination marks and view CBC grading</p>
         </div>
 
         {/* Exam Selection */}
@@ -227,7 +227,7 @@ const ResultEntry = () => {
 
         {/* Class Statistics */}
         {selectedExam && stats && stats.totalEntered > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <Card className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -298,7 +298,7 @@ const ResultEntry = () => {
                 </div>
               )}
 
-              <div className="border rounded-lg overflow-hidden">
+              <div className="border rounded-lg overflow-x-auto -mx-4 sm:mx-0">
                 <Table>
                   <TableHeader>
                     <TableRow>
@@ -382,9 +382,9 @@ const ResultEntry = () => {
         )}
 
         {/* CBC Grading Reference */}
-        <Card className="p-6 bg-muted/30">
-          <h4 className="font-semibold mb-3">CBC Grading Reference</h4>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Card className="p-4 sm:p-6 bg-muted/30">
+          <h4 className="font-semibold mb-3 text-sm sm:text-base">CBC Grading Reference</h4>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
             <div className="p-3 bg-background rounded border-l-4 border-success">
               <p className="font-semibold text-success">EE - Exceeds Expectations</p>
               <p className="text-sm text-muted-foreground">80% - 100%</p>
