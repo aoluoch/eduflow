@@ -14,6 +14,7 @@ import StudentPromotion from "./pages/StudentPromotion";
 import ResultEntry from "./pages/ResultEntry";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
+import Attendance from "./pages/Attendance";
 import Library from "./pages/Library";
 import Timetable from "./pages/Timetable";
 import Exams from "./pages/Exams";
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/my-classes" element={<Students />} />
             <Route path="/my-exams" element={<TeacherExams />} />
             <Route path="/result-entry" element={<ResultEntry />} />
+            <Route path="/attendance" element={<Attendance />} />
             <Route path="/my-timetable" element={<Timetable />} />
             
             {/* Parent Routes */}

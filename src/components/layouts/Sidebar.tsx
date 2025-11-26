@@ -11,7 +11,8 @@ import {
   UserCircle,
   ClipboardList,
   TrendingUp,
-  LogOut
+  LogOut,
+  UserCheck
 } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import { useRole } from '@/utils/roleContext';
@@ -44,6 +45,7 @@ export const Sidebar = () => {
           { to: '/my-classes', icon: BookOpen, label: 'My Classes' },
           { to: '/my-exams', icon: FileText, label: 'My Exams' },
           { to: '/result-entry', icon: ClipboardList, label: 'Result Entry' },
+          { to: '/attendance', icon: UserCheck, label: 'Attendance' },
           { to: '/my-timetable', icon: Calendar, label: 'My Timetable' },
           { to: '/library', icon: Library, label: 'Library' },
           { to: '/settings', icon: Settings, label: 'Settings' },
