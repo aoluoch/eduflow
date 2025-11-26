@@ -40,6 +40,7 @@ export const Sidebar = () => {
           { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
           { to: '/my-classes', icon: BookOpen, label: 'My Classes' },
           { to: '/my-exams', icon: FileText, label: 'My Exams' },
+          { to: '/result-entry', icon: ClipboardList, label: 'Result Entry' },
           { to: '/my-timetable', icon: Calendar, label: 'My Timetable' },
           { to: '/library', icon: Library, label: 'Library' },
         ];
