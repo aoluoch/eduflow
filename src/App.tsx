@@ -12,6 +12,7 @@ import Teachers from "./pages/Teachers";
 import Classes from "./pages/Classes";
 import StudentPromotion from "./pages/StudentPromotion";
 import ResultEntry from "./pages/ResultEntry";
+import Analytics from "./pages/Analytics";
 import Library from "./pages/Library";
 import Timetable from "./pages/Timetable";
 import Exams from "./pages/Exams";
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/classes" element={<Classes />} />
             <Route path="/promotion" element={<StudentPromotion />} />
             <Route path="/exams" element={<Exams />} />
+            <Route path="/analytics" element={<Analytics />} />
             <Route path="/timetable" element={<Timetable />} />
             <Route path="/settings" element={<Dashboard />} />
             
