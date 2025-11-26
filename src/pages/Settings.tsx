@@ -10,7 +10,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Separator } from '@/components/ui/separator';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useToast } from '@/hooks/use-toast';
-import { User, Bell, Lock, Settings as SettingsIcon, Upload } from 'lucide-react';
+import { User, Bell, Lock, Settings as SettingsIcon, Upload, Users, Mail, KeyRound } from 'lucide-react';
+import { parents } from '@/data/mockData';
 
 const Settings = () => {
   const { currentUser } = useRole();
@@ -104,7 +105,7 @@ const Settings = () => {
       </div>
 
       <Tabs defaultValue="profile" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-6">
+        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 mb-6">
           <TabsTrigger value="profile" className="gap-2">
             <User className="w-4 h-4" />
             <span className="hidden sm:inline">Profile</span>
@@ -120,6 +121,10 @@ const Settings = () => {
           <TabsTrigger value="system" className="gap-2">
             <SettingsIcon className="w-4 h-4" />
             <span className="hidden sm:inline">System</span>
+          </TabsTrigger>
+          <TabsTrigger value="parents" className="gap-2">
+            <Users className="w-4 h-4" />
+            <span className="hidden sm:inline">Parents</span>
           </TabsTrigger>
         </TabsList>
 
@@ -431,6 +436,103 @@ const Settings = () => {
               <Button onClick={handleSystemPrefsSave} className="w-full sm:w-auto">
                 Save Preferences
               </Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Parent Management Tab */}
+        <TabsContent value="parents">
+          <Card>
+            <CardHeader>
+              <CardTitle>Parent Account Management</CardTitle>
+              <CardDescription>Manage parent accounts and access credentials</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="rounded-lg border border-border bg-muted/50 p-4">
+                <div className="flex items-start gap-3">
+                  <Users className="w-5 h-5 text-primary mt-0.5" />
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-sm mb-1">Parent Enrollment</h4>
+                    <p className="text-sm text-muted-foreground">
+                      When admitting a new student, parent details are automatically collected and an invitation email is sent with login credentials.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <Separator />
+
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Registered Parents</h3>
+                <div className="space-y-3">
+                  {parents.map((parent) => (
+                    <div key={parent.id} className="flex items-center justify-between p-4 rounded-lg border border-border hover:bg-muted/50 transition-colors">
+                      <div className="flex items-center gap-3">
+                        <Avatar className="w-10 h-10">
+                          <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${parent.name}`} />
+                          <AvatarFallback>{parent.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-medium">{parent.name}</p>
+                          <p className="text-sm text-muted-foreground">{parent.email}</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => {
+                            toast({
+                              title: "Invitation Sent",
+                              description: `Password reset link sent to ${parent.email}`,
+                            });
+                          }}
+                        >
+                          <Mail className="w-4 h-4 mr-2" />
+                          Resend Invite
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => {
+                            toast({
+                              title: "Password Reset",
+                              description: `New temporary password sent to ${parent.email}`,
+                            });
+                          }}
+                        >
+                          <KeyRound className="w-4 h-4 mr-2" />
+                          Reset Password
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Separator />
+
+              <div className="rounded-lg border border-border bg-muted/50 p-4">
+                <h4 className="font-semibold text-sm mb-2">How Parent Access Works</h4>
+                <ul className="text-sm text-muted-foreground space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span>Parents receive an email with login credentials when their child is admitted</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span>They can change their password on first login from the Settings page</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span>Use "Resend Invite" if they didn't receive the initial email</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span>Use "Reset Password" to generate a new temporary password</span>
+                  </li>
+                </ul>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
