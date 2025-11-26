@@ -55,15 +55,6 @@ export const Sidebar = () => {
           { to: '/library', icon: Library, label: 'Library' },
           { to: '/settings', icon: Settings, label: 'Settings' },
         ];
-      case 'student':
-        return [
-          { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-          { to: '/my-profile', icon: UserCircle, label: 'My Profile' },
-          { to: '/my-assessments', icon: ClipboardList, label: 'Assessments' },
-          { to: '/my-timetable', icon: Calendar, label: 'Timetable' },
-          { to: '/library', icon: Library, label: 'Library' },
-          { to: '/settings', icon: Settings, label: 'Settings' },
-        ];
       default:
         return [];
     }

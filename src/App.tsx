@@ -53,10 +53,6 @@ const App = () => (
             {/* Parent Routes */}
             <Route path="/my-children" element={<Students />} />
             
-            {/* Student Routes */}
-            <Route path="/my-profile" element={<StudentProfile />} />
-            <Route path="/my-assessments" element={<StudentProfile />} />
-            
             {/* Shared Routes */}
             <Route path="/library" element={<Library />} />
             

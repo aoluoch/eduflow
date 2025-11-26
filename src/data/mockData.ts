@@ -1,4 +1,4 @@
-export type Role = 'super-admin' | 'admin' | 'teacher' | 'parent' | 'student';
+export type Role = 'super-admin' | 'admin' | 'teacher' | 'parent';
 
 export type CBCLevel = 'BE' | 'ME' | 'EE';
 
