@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { useRole } from '@/utils/roleContext';
 import { useNavigate } from 'react-router-dom';
 import { Role, User } from '@/data/mockData';
-import { ShieldCheck, Users, GraduationCap, UserCircle, Baby } from 'lucide-react';
+import { ShieldCheck, Users, GraduationCap, UserCircle } from 'lucide-react';
 
 const roles: Array<{ role: Role; label: string; description: string; icon: typeof ShieldCheck }> = [
   {
@@ -30,12 +30,6 @@ const roles: Array<{ role: Role; label: string; description: string; icon: typeo
     description: 'View child progress',
     icon: UserCircle,
   },
-  {
-    role: 'student',
-    label: 'Student',
-    description: 'View personal records',
-    icon: Baby,
-  },
 ];
 
 const RoleSelector = () => {
@@ -47,8 +41,7 @@ const RoleSelector = () => {
       id: `user-${role}`,
       name: role === 'super-admin' ? 'Admin User' : 
             role === 'teacher' ? 'John Kamau' :
-            role === 'parent' ? 'James Mwangi' :
-            role === 'student' ? 'Brian Mwangi' : 'Admin User',
+            role === 'parent' ? 'James Mwangi' : 'Admin User',
       email: `${role}@getmore.edu`,
       role: role,
     };
@@ -64,9 +57,10 @@ const RoleSelector = () => {
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground">Getmore Educational Community Centre</h1>
           <p className="text-lg sm:text-xl text-muted-foreground">CBC School Management System</p>
           <p className="text-sm text-muted-foreground">Select a role to continue (Mock Authentication)</p>
+          <p className="text-xs text-muted-foreground/80">Students are managed by Admins and Teachers</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {roles.map(({ role, label, description, icon: Icon }) => (
             <Card
               key={role}
