@@ -104,6 +104,19 @@ export interface AcademicTerm {
   current: boolean;
 }
 
+export type AttendanceStatus = 'present' | 'absent' | 'late' | 'excused';
+
+export interface Attendance {
+  id: string;
+  studentId: string;
+  gradeId: string;
+  date: string;
+  status: AttendanceStatus;
+  markedBy: string; // teacherId
+  notes?: string;
+  alertSent?: boolean;
+}
+
 // Mock Data
 export const grades: Grade[] = [
   { id: '1', name: 'Grade 1', level: 'Lower Primary' },
@@ -421,6 +434,52 @@ export const academicTerms: AcademicTerm[] = [
   },
 ];
 
+export const attendanceRecords: Attendance[] = [
+  {
+    id: 'att1',
+    studentId: 'st1',
+    gradeId: '1',
+    date: '2024-11-25',
+    status: 'present',
+    markedBy: 't1',
+  },
+  {
+    id: 'att2',
+    studentId: 'st2',
+    gradeId: '1',
+    date: '2024-11-25',
+    status: 'absent',
+    markedBy: 't1',
+    notes: 'Parent called in sick',
+    alertSent: true,
+  },
+  {
+    id: 'att3',
+    studentId: 'st3',
+    gradeId: '2',
+    date: '2024-11-25',
+    status: 'late',
+    markedBy: 't1',
+    notes: 'Arrived 20 minutes late',
+  },
+  {
+    id: 'att4',
+    studentId: 'st1',
+    gradeId: '1',
+    date: '2024-11-24',
+    status: 'present',
+    markedBy: 't1',
+  },
+  {
+    id: 'att5',
+    studentId: 'st2',
+    gradeId: '1',
+    date: '2024-11-24',
+    status: 'present',
+    markedBy: 't1',
+  },
+];
+
 // Utility functions
 export const getGradeById = (id: string) => grades.find(g => g.id === id);
 export const getSubjectById = (id: string) => subjects.find(s => s.id === id);
@@ -439,3 +498,9 @@ export const getBooksByGradeId = (gradeId?: string) =>
   gradeId ? books.filter(b => b.gradeId === gradeId) : books;
 export const getStudentsByGradeId = (gradeId: string) => 
   students.filter(s => s.gradeId === gradeId);
+export const getAttendanceByDateAndGrade = (date: string, gradeId: string) =>
+  attendanceRecords.filter(a => a.date === date && a.gradeId === gradeId);
+export const getAttendanceByStudent = (studentId: string) =>
+  attendanceRecords.filter(a => a.studentId === studentId);
+export const getAttendanceByGrade = (gradeId: string) =>
+  attendanceRecords.filter(a => a.gradeId === gradeId);
