@@ -46,12 +46,14 @@ export const Sidebar = () => {
           { to: '/result-entry', icon: ClipboardList, label: 'Result Entry' },
           { to: '/my-timetable', icon: Calendar, label: 'My Timetable' },
           { to: '/library', icon: Library, label: 'Library' },
+          { to: '/settings', icon: Settings, label: 'Settings' },
         ];
       case 'parent':
         return [
           { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
           { to: '/my-children', icon: Users, label: 'My Children' },
           { to: '/library', icon: Library, label: 'Library' },
+          { to: '/settings', icon: Settings, label: 'Settings' },
         ];
       case 'student':
         return [
@@ -60,6 +62,7 @@ export const Sidebar = () => {
           { to: '/my-assessments', icon: ClipboardList, label: 'Assessments' },
           { to: '/my-timetable', icon: Calendar, label: 'Timetable' },
           { to: '/library', icon: Library, label: 'Library' },
+          { to: '/settings', icon: Settings, label: 'Settings' },
         ];
       default:
         return [];
