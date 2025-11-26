@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useRole } from '@/utils/roleContext';
+import { DashboardLayout } from '@/components/layouts/DashboardLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
@@ -98,6 +99,7 @@ const Settings = () => {
   };
 
   return (
+    <DashboardLayout>
     <div className="container mx-auto p-4 md:p-6 lg:p-8 max-w-5xl">
       <div className="mb-6 md:mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-foreground">Settings</h1>
@@ -538,6 +540,7 @@ const Settings = () => {
         </TabsContent>
       </Tabs>
     </div>
+    </DashboardLayout>
   );
 };
 

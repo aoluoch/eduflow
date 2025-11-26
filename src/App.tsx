@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RoleProvider } from "@/utils/roleContext";
-import RoleSelector from "./pages/RoleSelector";
+import Login from "./pages/RoleSelector";
 import Dashboard from "./pages/Dashboard";
 import Students from "./pages/Students";
 import StudentProfile from "./pages/StudentProfile";
@@ -31,7 +31,7 @@ const App = () => (
       <RoleProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<RoleSelector />} />
+            <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             
             {/* Super Admin / Admin Routes */}
